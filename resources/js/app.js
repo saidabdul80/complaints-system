@@ -29,10 +29,8 @@ Vue.prototype.$eventBus = new Vue();
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('voting-stage', require('./components/voting.vue').default);
-Vue.component('dashboard-stage', require('./components/dashboard.vue').default);
-Vue.component('results-stage', require('./components/result.vue').default);
-
+Vue.component('complaints-page', require('./components/complaints_page.vue').default);
+Vue.component('inbox-page', require('./components/inbox.vue').default);
  
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -18,7 +18,7 @@ class userSeeder extends Seeder
             'id' => 1,           
             'fname'=> 'Admin',                        
             'lname' => 'Admin',           
-            'email' => 'Admin@voting.com',           
+            'email' => 'admin@ibbu.com',           
             'password'=>md5(12345678)
         ]);   
         

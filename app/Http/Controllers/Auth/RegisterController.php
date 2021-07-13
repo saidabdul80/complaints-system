@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Aspirant;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -70,37 +69,14 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(Request $request)
-    {
-            $role = $request->get('role');         
-        if ($role == 'aspirants') {
-            if ($request->has('profile_image')) {
-                 $image = $request->profile_image;
-                 $folder = '/uploads/images/';                 
-                $name =$request->get('fname').'_'.$request->get('lastname'). '_'.time().'.'.$image->getClientOriginalExtension();
-                // Make a file path where image will be stored [ folder path + file name + file extension]
-                $filePath = $folder.$name;  
-                $image->move(public_path('/uploads/images'), $name);
-                 // Upload image                
-                Aspirant::create([
-                    'fname'   => $request->get('fname'),
-                    'lname'   => $request->get('lastname'),
-                    'post_id' => $request->get('posts'),
-                    'gender'  => $request->get('gender'),
-                    'image'   => $filePath,
-                    'phone'   => $request->get('phone'),
-                    'counts'   => 0,
-                    'email'   => $request->get('email'),
-                    'password' => md5($request->get('password')),
-                ]);                
-                return redirect()->back()->with(['status' => 'Profile updated successfully.']);
-            }
-        }else{            
+    {            
+            //  return redirect()->back()->with(['status' => 'Profile updated successfully.']);
             return User::create([
                 'fname' => $request->get('fname'),
                 'lname' => $request->get('lname'),               
+                'gender' => $request->get('gender'),               
                 'email' => $request->get('email'),
                 'password' => md5($request->get('password')),
-            ]);
-        }
+            ]);        
     }
 }

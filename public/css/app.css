@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,900&display=swap');
 @charset "UTF-8";
 
 /*!
@@ -446,7 +447,83 @@ h6,
   font-weight: 300;
   line-height: 1.2;
 }
+.fs-5{
+  font-size: 4em !important;  
+}
+.fs-6{
+  font-size: 5em !important;
+}
+.fs-4{
+  font-size: 2.5em !important;  
+}
+.fs-3{
+  font-size: 2em !important;  
+}
+.fs-2{
+  font-size: 1.5em !important;  
+}
+.fs-1{
+  font-size: 1em !important;  
+}
+.fs-015{
+  font-size: 0.9em !important;
+}
+.fs-01{
+  font-size: 0.8em !important;  
+}
+.fw8{
+  font-weight: 900 !important;
+}
+.fw7{
+  font-weight: 700 !important;
+}
+.fw6{
+  font-weight: 600 !important;
+}
+.fw5{
+  font-weight: 500 !important;
+}
+.fw3{
+  font-weight: 300 !important;
+}
+.fw2{
+  font-weight: 200 !important;
+}
+.font{
+  font-family: 'Roboto', sans-serif;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  cursor: pointer;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #20152e;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #20154e;
+  cursor: pointer;
+}
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -594,11 +671,13 @@ pre code {
 }
 
 @media (min-width: 768px) {
+
   .container-md,
   .container-sm,
   .container {
     max-width: 720px;
   }
+
 }
 
 @media (min-width: 992px) {
@@ -2064,8 +2143,26 @@ pre code {
     border: 0;
   }
 }
-
+.display-none{
+  display: none;
+}
+.display-flex{
+  display: flex;
+}
 @media (max-width: 767.98px) {
+  .mobile-display-none{
+    display: none;
+  }
+  .show-left-menu{
+    display: block;
+  }
+  a.navbar-brand{
+    width: 80% !important;
+    font-size: 1.1em;
+    padding-left: 20px;
+    margin: 0px;
+    text-align: center !important;    
+  }
   .table-responsive-md {
     display: block;
     width: 100%;
@@ -10943,3 +11040,23 @@ a.text-dark:focus {
 }
 
 
+.loader {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 0.4s linear infinite; /* Safari */
+  animation: spin 0.4s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

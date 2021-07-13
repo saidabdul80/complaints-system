@@ -1,7 +1,4 @@
 <?php
-use App\Models\Post;
-
-$posts =  Post::all();
 
 ?>
 @extends('layouts.app')
@@ -15,20 +12,9 @@ $posts =  Post::all();
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-                        @csrf
+                        @csrf                       
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Position</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control " name="posts">
-                                    @foreach($posts as $post)
-                                    <option value="{{$post->id}}">{{$post->name}}</option>
-                                    @endforeach                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="fname" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="fname" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="fname" type="text" class="form-control @error('name') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus>
@@ -42,7 +28,7 @@ $posts =  Post::all();
                         </div>
                         <div class="form-group row">
 
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
 
@@ -76,30 +62,14 @@ $posts =  Post::all();
                                     <option value="female">Female</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Photo</label>
-                            <div class="col-md-6">
-                                <input type="file" name="profile_image" class="form-control">                                
-                            </div>
-                        </div>
+                        </div>            
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Phone</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control ">
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">User Role</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control " name="role">
-                                    <option value="aspirants">Aspirants</option>
-                                    <!-- <option value="female">Admin</option> -->
-                                </select>
-                            </div>
-                        </div>
+                        </div>                   
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

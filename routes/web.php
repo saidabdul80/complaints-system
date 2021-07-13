@@ -1,10 +1,18 @@
 <?php
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\VotingController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InboxController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\EmailMessageController;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Mail\MailtrapMailler;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,34 +24,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
 
 //Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::post('/submitForm', [HomeController::class,'submitForm'])->name('form');
 Route::get('/login', [LoginController::class, 'showLoginForm']);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('/get_posts', [PostController::class, 'getAllPost']);
-Route::post('/get_aspirants', [PostController::class, 'getAspirants']);
+Route::post('/get_messages', [MessageController::class, 'getAllMessage']);
+Route::post('/read_message', [MessageController::class, 'readMessage']);
 
-Route::post('/check_eligibility', [PostController::class, 'checkEligility']);
-Route::post('/submit_elect', [PostController::class, 'submitElect']);
+/*
+	Route::post('/get_aspirants', [PostController::class, 'getAspirants']);
+*/
+
 
 
 
 Route::post('/register', [RegisterController::class, 'create'])->name('register');
 Route::get('/register', [RegisterController::class,'index']);
+Route::get('/inbox', [InboxController::class,'inbox']);
+Route::post('/send_resolve_message', [EmailMessageController::class, 'default']);
 Route::middleware(['authlogin'])->group(function(){
-
-	Route::get('/voters_inputs', [VotingController::class, 'votersInputs']);
-	Route::get('/all_aspirants_vote', [VotingController::class, 'allAspirantsVotes']);
-	Route::get('/results',function(){
-		return view('results');
+        	
+	Route::get('/send-mail', function () {
+	    Mail::to('newuser@example.com')->send(new MailtrapMailler());
+	    return 'A message has been sent to Mailtrap!';
 	});
-	Route::get('/voting', [VotingController::class, 'index'])->name('voting');
-	Route::get('/dashboard', [VotingController::class, 'dashboard'])->name('dashboard');
-
 });

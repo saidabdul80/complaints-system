@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<voting-stage></voting-stage>
+	@if (Session::has('status'))      
+		<complaints-page status="{{session('status')}}"></complaints-page>
+	@else
+		<complaints-page status=""></complaints-page>	
+	@endif
 @endsection

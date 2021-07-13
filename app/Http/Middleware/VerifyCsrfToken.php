@@ -12,10 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'get_posts',
-		'get_aspirants',
-		'check_eligibility',
-		'submit_elect',
-		'voters_inputs'
+        'submitForm',
+        'get_messages',
+        'read_message',
+        'send_resolve_message'
     ];
 }

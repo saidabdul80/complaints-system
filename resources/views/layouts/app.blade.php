@@ -58,10 +58,12 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="">
+                    <!-- <ul class="navbar-nav ml-auto"> -->
                         <!-- Authentication Links -->
-                        @if(!session()->has('user'))                        
-                            <li class="nav-item">
+                        <img src="/ibb.png" width="15%" class="pull-right">
+                        <!-- @if(!session()->has('user'))                        
+                          <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif                            
@@ -95,15 +97,15 @@
                                     </form>
                                 </div>
                             </li>
-                        @endif
+                        @endif -->
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <div class="">
             @yield('content')
-        </main>
+        </div>
         <div class="footer">
             (c)2021 Develop by MSUIT visit www.msuit.com.ng
         </div>

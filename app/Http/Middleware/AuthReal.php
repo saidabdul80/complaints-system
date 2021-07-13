@@ -16,11 +16,11 @@ class AuthReal
      */
     public function handle(Request $request, Closure $next)
     {
-          $user  = session('user')??'';          
+        /*  $user  = session('user')??'';          
         if ($user == '') {
             return redirect('/login');
         }else{
             return $next($request);        
-        }
+        }*/
     }
 }
